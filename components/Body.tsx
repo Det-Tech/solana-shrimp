@@ -1,14 +1,15 @@
 import { useWallet } from "@solana/wallet-adapter-react";
-import { buyEggs, hatchEggs, sellEggs, initialize } from "@/api";
+import { buyEggs, hatchEggs, sellEggs } from "@/api";
 import { useState } from "react";
 import { toast } from "react-toastify";
-import { useUmi } from "@/pages/useUmi";
+import useUmi from "@/hook/useUmi";
 import { useRouter } from 'next/router';
 
 export default function Body() {
   const wallet: any = useWallet();
   const [buyAmount, setBuyAmount] = useState<any>(0);
   const router = useRouter();
+  // @ts-ignore
   const [loading, setLoading] = useState(false);
 
   const umi: any = useUmi();

@@ -11,7 +11,7 @@ const DEFAULT_CONTEXT: UmiContext = {
 
 export const UmiContext = createContext<UmiContext>(DEFAULT_CONTEXT);
 
-export function useUmi(): Umi {
+export default function useUmi(): Umi {
   const umi = useContext(UmiContext).umi;
   if (!umi) {
     throw new Error(

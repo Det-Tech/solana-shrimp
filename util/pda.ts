@@ -2,7 +2,7 @@ import { PublicKey } from "@solana/web3.js";
 import { SHRIMP_PROGRAM_ID } from "./../config";
 
 export function findPlayerDataAcc(player: PublicKey): PublicKey {
-    const [listingDataAcc, bump] = PublicKey.findProgramAddressSync(
+    const [listingDataAcc] = PublicKey.findProgramAddressSync(
         [player.toBuffer(), Buffer.from("shrimp")],
         SHRIMP_PROGRAM_ID
     );    
@@ -19,7 +19,7 @@ export function findGameDataAcc(): PublicKey {
 }
 
 export function findGameTreasuryAcc(): PublicKey {
-    const [assetManager, bump] = PublicKey.findProgramAddressSync(
+    const [assetManager] = PublicKey.findProgramAddressSync(
         [Buffer.from("shrimp_wallet")],
         SHRIMP_PROGRAM_ID
     );

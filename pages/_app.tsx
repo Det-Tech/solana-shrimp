@@ -9,7 +9,7 @@ import {
 import { clusterApiUrl } from "@solana/web3.js";
 import type { AppProps } from "next/app";
 import { useMemo } from "react";
-import { UmiProvider } from "./UmiProvider";
+import UmiProvider from "@/hook/UmiProvider";
 import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";

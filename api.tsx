@@ -5,7 +5,7 @@ import {
   Connection,
 } from "@solana/web3.js";
 import { SHRIMP_PROGRAM_ID, DEV_WALLET } from "./config";
-import { Program, web3 } from "@project-serum/anchor";
+import { Program } from "@project-serum/anchor";
 import * as anchor from "@project-serum/anchor";
 
 import idl from "./idl.json";

@@ -4,16 +4,17 @@ import { useWallet } from "@solana/wallet-adapter-react";
 import { ReactNode } from "react";
 import { UmiContext } from "./useUmi";
 
-export const UmiProvider = ({
+export default function UmiProvider ({
   endpoint,
   children,
 }: {
   endpoint: string;
   children: ReactNode;
-}) => {
+}) {
   const wallet = useWallet();
   const umi = createUmi(endpoint)
     .use(walletAdapterIdentity(wallet))
 
   return <UmiContext.Provider value={{ umi }}>{children}</UmiContext.Provider>;
 };
+
