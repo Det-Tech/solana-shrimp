@@ -3,10 +3,12 @@ import { buyEggs, hatchEggs, sellEggs, initialize } from "@/api";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { useUmi } from "@/pages/useUmi";
+import { useRouter } from 'next/router';
 
 export default function Body() {
   const wallet: any = useWallet();
   const [buyAmount, setBuyAmount] = useState<any>(0);
+  const router = useRouter();
   const [loading, setLoading] = useState(false);
 
   const umi: any = useUmi();
@@ -34,7 +36,7 @@ export default function Body() {
       autoClose: 3000,
     });
 
-    const res = await buyEggs(umi.rpc["connection"], wallet, buyAmount);
+    const res = await buyEggs(umi.rpc["connection"], wallet, buyAmount, router.query);
 
     toast.update(id, {
       render: res.success ? "Successfully bought" : "Error",
@@ -93,6 +95,24 @@ export default function Body() {
       isLoading: false,
     });
   };
+
+  const copyRef = async () =>{
+    
+    if(!wallet?.publicKey){
+      toast.info("Connect Wallet!", {
+        position: toast.POSITION.TOP_RIGHT,
+        autoClose: 3000,
+      });
+      return;
+    }
+
+    navigator.clipboard.writeText(`${window.location.href}?refer=${wallet?.publicKey.toString()}`);
+
+    toast.success("Copied", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 3000,
+    });  
+  }
 
   const getFreeShrimp = async () => {
     toast.info("Coming soon!", {
@@ -270,9 +290,9 @@ export default function Body() {
           <h4>Referrals</h4>
           <p>
             Earn <b>10%</b> of the number of all eggs hatched by anyone who
-            starts playing using your link:
-            <a onClick={() => "copyRef()"} id="playerreflink">
-              ?
+            starts playing using your  &nbsp;
+            <a onClick={() => copyRef()} id="playerreflink">
+              link:
             </a>
           </p>
 

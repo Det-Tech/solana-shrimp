@@ -74,7 +74,8 @@ export const initialize = async (
 export const buyEggs = async (
   connection: Connection,
   wallet: any,
-  buyAmount: any
+  buyAmount: any,
+  referAccount: any
 ) => {
   try {
     console.log("buyEggs starting...");
@@ -83,7 +84,13 @@ export const buyEggs = async (
 
     let testWallet = anchor.web3.Keypair.generate();
 
-    const referr = testWallet.publicKey; // need to check and replace referr
+    let referr;
+
+    if (!referAccount?.refer || referAccount?.refer == provider.wallet.publicKey.toBase58()){
+      referr = testWallet.publicKey; // need to check and replace referr
+    } else{
+      referr = new PublicKey(referAccount?.refer)
+    }
 
     const gameStateAccount: PublicKey = await findGameDataAcc();
     const refStateAccount: PublicKey = await findPlayerDataAcc(testWallet.publicKey);
