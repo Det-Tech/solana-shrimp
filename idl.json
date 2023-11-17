@@ -1,0 +1,197 @@
+{
+    "version": "0.1.0",
+    "name": "solana_shrimp",
+    "instructions": [
+      {
+        "name": "initialize",
+        "accounts": [
+          {
+            "name": "gameStateAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "dev",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "treasuryAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "marketEggs",
+            "type": "u128"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "devWallet",
+            "type": "publicKey"
+          }
+        ]
+      },
+      {
+        "name": "buyShrimp",
+        "accounts": [
+          {
+            "name": "player",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "playerStateAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "referrerStateAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "gameStateAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "referrerAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "devWallet",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "treasuryAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": [
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "referrer",
+            "type": "publicKey"
+          }
+        ]
+      },
+      {
+        "name": "hatchEggs",
+        "accounts": [
+          {
+            "name": "playerAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "gameStateAccount",
+            "isMut": true,
+            "isSigner": false
+          }
+        ],
+        "args": []
+      },
+      {
+        "name": "sellEggs",
+        "accounts": [
+          {
+            "name": "player",
+            "isMut": true,
+            "isSigner": true
+          },
+          {
+            "name": "playerAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "gameStateAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "devWallet",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "treasuryAccount",
+            "isMut": true,
+            "isSigner": false
+          },
+          {
+            "name": "systemProgram",
+            "isMut": false,
+            "isSigner": false
+          }
+        ],
+        "args": []
+      }
+    ],
+    "accounts": [
+      {
+        "name": "GameState",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "marketEggs",
+              "type": "u128"
+            },
+            {
+              "name": "devWallet",
+              "type": "publicKey"
+            }
+          ]
+        }
+      },
+      {
+        "name": "PlayerState",
+        "type": {
+          "kind": "struct",
+          "fields": [
+            {
+              "name": "extraEggs",
+              "type": "u128"
+            },
+            {
+              "name": "shrimp",
+              "type": "u128"
+            },
+            {
+              "name": "lastInteraction",
+              "type": "u64"
+            },
+            {
+              "name": "referralTotal",
+              "type": "u128"
+            }
+          ]
+        }
+      }
+    ],
+    "metadata": {
+      "address": "9T95SiuoW8a5BFyJW39ZZuh6hfz3aTMiHzNVi4vfr2G9"
+    }
+  }
