@@ -132,7 +132,7 @@ export const sellEggs = async (
     const playerAccount: PublicKey = await findPlayerDataAcc(provider.wallet.publicKey);
     const gameTreasuryAccount: PublicKey = await findGameTreasuryAcc();
 
-    const tx = await program.rpc.updateFee({
+    const tx = await program.rpc.sellEggs({
       accounts: {
         player: provider.wallet.publicKey,
         playerAccount: playerAccount,
