@@ -19,7 +19,7 @@ export default function Home() {
         <meta property="og:description" content={`Solana Shrimp By Mr F`} />
         <meta
           property="og:image"
-          content={"https://api-artengine.texaglo.com/man.png"}
+          content={"https://i.seadn.io/s/raw/files/56098e58bec8f25937a35adef1557ac5.png"}
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
