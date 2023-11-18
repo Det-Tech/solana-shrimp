@@ -163,7 +163,7 @@ export const hatchEggs = async (
     const gameStateAccount: PublicKey = await findGameDataAcc();
     const playerAccount: PublicKey = await findPlayerDataAcc(provider.wallet.publicKey);
 
-    const tx = await program.methods.hatchEggs({
+    const tx = await program.rpc.hatchEggs({
       accounts: {
         playerAccount: playerAccount,
         gameStateAccount: gameStateAccount,
